@@ -533,6 +533,8 @@ class HTML(BaseParser):
             if scrolldown:
                 await page._keyboard.up('PageDown')
 
+            # JS redirect fix
+            await page.waitForSelector("html")
             # Return the content of the page, JavaScript evaluated.
             content = await page.content()
             if not keep_page:
